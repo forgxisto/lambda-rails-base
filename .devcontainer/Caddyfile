@@ -1,0 +1,24 @@
+localhost:3000 {
+  tls internal
+  reverse_proxy app:3000
+}
+
+localhost:3036 {
+  tls internal
+  reverse_proxy app:3036
+}
+
+localhost:2379 {
+  tls internal
+  reverse_proxy tidb:2379
+}
+
+localhost:9000 {
+  tls internal
+  reverse_proxy tidb:3000
+}
+
+localhost:9090 {
+  tls internal
+  reverse_proxy tidb:9090
+}

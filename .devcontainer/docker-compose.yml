@@ -1,0 +1,38 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: development
+    command: sleep infinity
+    privileged: true
+    expose:
+      - 3000
+      - 3036
+  caddy:
+    image: "caddy:2.4.3"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "3000:3000"
+      - "3036:3036"
+      - "2379:2379"
+      - "9000:9000"
+      - "9090:9090"
+    depends_on:
+      - app
+  tidb:
+    build:
+      context: ./
+      dockerfile: Dockerfile.tidb
+    volumes:
+      - ./tidb_data:/root/.tiup/data
+    expose:
+      - 2379
+      - 3000
+      - 4000
+      - 9090
+volumes:
+  caddy_config:
