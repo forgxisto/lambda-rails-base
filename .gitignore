@@ -39,5 +39,6 @@
 
 /.devcontainer/caddy_data/*
 /.devcontainer/tidb_data/*
+/.devcontainer/localstack_data/*
 
 /*/.DS_Store
