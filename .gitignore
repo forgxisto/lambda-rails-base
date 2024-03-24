@@ -37,7 +37,9 @@
 /vendor/bundle/*
 /node_modules/*
 
-/.devcontainer/caddy_data/*
-/.devcontainer/tidb_data/*
+/.devcontainer/caddy/data/*
+/.devcontainer/caddy/config/*
+/.devcontainer/tidb/data/*
+/.devcontainer/localstack/data/*
 
 /*/.DS_Store
