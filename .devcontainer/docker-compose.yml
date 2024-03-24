@@ -12,9 +12,9 @@ services:
   caddy:
     image: "caddy:2.4.3"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy_data:/data
-      - caddy_config:/config
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/data:/data
+      - ./caddy/config:/config
     ports:
       - "3000:3000"
       - "3036:3036"
@@ -28,7 +28,7 @@ services:
       context: ./
       dockerfile: Dockerfile.tidb
     volumes:
-      - ./tidb_data:/root/.tiup/data
+      - ./tidb/data:/root/.tiup/data
     expose:
       - 2379
       - 3000
@@ -44,7 +44,13 @@ services:
       - DEBUG=${DEBUG:-0}
       - USE_SSL=1
     volumes:
-      - "./localstack_data:/var/lib/localstack"
+      - "./localstack/boot:/etc/localstack/init/ready.d"
+      - "./localstack/data:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      default:
+        aliases:
+          - s3.localhost.localstack.cloud
+          - pictures.s3.localhost.localstack.cloud # S3 bucket for pictures
 volumes:
   caddy_config:
