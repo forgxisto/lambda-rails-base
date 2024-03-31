@@ -42,7 +42,6 @@ services:
     environment:
       # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
       - DEBUG=${DEBUG:-0}
-      - USE_SSL=1
     volumes:
       - "./localstack/boot:/etc/localstack/init/ready.d"
       - "./localstack/data:/var/lib/localstack"
