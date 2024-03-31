@@ -50,6 +50,7 @@ services:
     networks:
       default:
         aliases:
+          - sqs.localhost.localstack.cloud
           - s3.localhost.localstack.cloud
           - pictures.s3.localhost.localstack.cloud # S3 bucket for pictures
 volumes:
