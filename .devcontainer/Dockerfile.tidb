@@ -4,6 +4,7 @@ FROM ubuntu:latest
 RUN apt-get update \
   && apt-get install -y \
   curl \
+  tzdata \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -31,6 +32,7 @@ RUN chmod +x install.sh
 RUN ./install.sh
 RUN cp /root/.tiup/bin/tiup /usr/local/bin/tiup
 RUN tiup update --all
+RUN tiup clean --all
 
 # Start the application
-CMD ["tiup", "playground", "--host", "0.0.0.0", "--tag", "current"]
+CMD ["sleep", "infinity"]

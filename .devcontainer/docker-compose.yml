@@ -27,6 +27,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.tidb
+    command: tiup playground v7.5.1 --host 0.0.0.0 --tag current
     volumes:
       - ./tidb/data:/root/.tiup/data
     expose:
