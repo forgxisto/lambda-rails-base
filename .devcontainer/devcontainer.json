@@ -1,6 +1,6 @@
 {
 	"service": "app",
-	"dockerComposeFile": "docker-compose.yml",
+	"dockerComposeFile": "compose.yaml",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils": {},
 		"ghcr.io/devcontainers/features/aws-cli:latest": {},
@@ -35,7 +35,8 @@
 	"mounts": [
 		"source=${localWorkspaceFolder},target=/rails,type=bind,consistency=cached"
 	],
-	"postCreateCommand": "rm -fr ./tmp/* && rm -fr ./log/* && rm -fr ./public/vite*",
+	"postCreateCommand": "",
+	"postStartCommand": "rm -fr ./tmp/* && rm -fr ./log/* && rm -fr ./public/vite*",
 	"forwardPorts": [
 		"caddy:3000",
 		"caddy:3036",

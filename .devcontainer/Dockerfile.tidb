@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-# Update the package lists
+# Update and install the package
 RUN apt-get update \
   && apt-get install -y \
   curl \
@@ -8,23 +8,8 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# Install any necessary packages or dependencies
-# ...
-
 # Set the working directory
 WORKDIR /tidb
-
-# Copy files or directories into the container
-# ...
-
-# Set the entry point or default command
-# ...
-
-# Expose any necessary ports
-# ...
-
-# Define any environment variables
-# ...
 
 # Run any additional commands or scripts
 RUN curl -O -L https://tiup-mirrors.pingcap.com/install.sh
