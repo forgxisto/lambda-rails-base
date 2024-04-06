@@ -16,6 +16,9 @@ gem 'trilogy'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
+# Active Job
+gem 'lambdakiq'
+
 group :development, :test do
   gem 'debug'
   gem 'factory_bot_rails'
