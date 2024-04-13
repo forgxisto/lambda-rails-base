@@ -13,11 +13,18 @@ gem 'vite_rails'
 # Use mysql as the database for Active Record
 gem 'trilogy'
 
-# Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
+gem 'lamby'
+gem 'rack', '~> 2.0', '>= 2.2.9'
 
 # Active Job
 gem 'lambdakiq'
+
+# AWS
+gem 'aws-sdk-sqs'
+gem 'aws-sdk-s3'
+
+# Log
+gem 'lograge'
 
 group :development, :test do
   gem 'debug'
@@ -27,6 +34,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'webrick'
+
   gem 'annotate', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

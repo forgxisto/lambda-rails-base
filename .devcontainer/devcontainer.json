@@ -1,5 +1,5 @@
 {
-	"service": "app",
+	"service": "rails",
 	"dockerComposeFile": "compose.yaml",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils": {},
