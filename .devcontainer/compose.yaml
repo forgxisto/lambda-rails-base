@@ -44,6 +44,7 @@ services:
     volumes:
       - "./localstack/boot:/etc/localstack/init/ready.d"
       - "./localstack/data:/var/lib/localstack"
+      - "./localstack/localstack_boot_files:/opt/localstack_boot_files"
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       default:

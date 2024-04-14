@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'lambdakiq' => 'lambdakiq#call'
+
   resources :comments
   resources :articles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
