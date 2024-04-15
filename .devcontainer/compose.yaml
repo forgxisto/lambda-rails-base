@@ -8,6 +8,7 @@ services:
     privileged: true
     expose:
       - 3000
+      - 3001
       - 3036
   caddy:
     image: "caddy:2.4.3"

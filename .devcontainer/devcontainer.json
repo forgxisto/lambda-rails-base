@@ -48,6 +48,9 @@
 		"3000": {
 			"onAutoForward": "ignore"
 		},
+		"3001": {
+			"onAutoForward": "ignore"
+		},
 		"3036": {
 			"onAutoForward": "ignore"
 		},
