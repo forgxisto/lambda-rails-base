@@ -10,3 +10,9 @@
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.configure do
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{30.days.seconds.to_i}",
+    'X-Lamby-Base64' => '1'
+  }
+end

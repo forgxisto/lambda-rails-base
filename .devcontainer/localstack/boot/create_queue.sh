@@ -1,6 +1,6 @@
 #!/bin/bash
 
-queue_name="rails-queue"
+queue_name="default"
 lambda_file_path="/opt/localstack_boot_files/lambdakiq_proxy.zip"
 
 # SQSキューの作成

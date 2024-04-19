@@ -324,7 +324,6 @@ DEPENDENCIES
   rubocop-thread_safety
   trilogy
   vite_rails
-  webrick
 
 RUBY VERSION
    ruby 3.2.3p157

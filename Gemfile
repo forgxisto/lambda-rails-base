@@ -34,8 +34,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'webrick'
-
   gem 'annotate', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
