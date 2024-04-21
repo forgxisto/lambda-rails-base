@@ -1,11 +1,11 @@
 localhost:3000 {
   tls internal
-  reverse_proxy app:3000
+  reverse_proxy rails:3000
 }
 
 localhost:3036 {
   tls internal
-  reverse_proxy app:3036
+  reverse_proxy rails:3036
 }
 
 localhost:2379 {

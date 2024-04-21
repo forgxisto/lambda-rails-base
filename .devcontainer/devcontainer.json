@@ -1,5 +1,5 @@
 {
-	"service": "app",
+	"service": "rails",
 	"dockerComposeFile": "compose.yaml",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils": {},
@@ -46,6 +46,9 @@
 	],
 	"portsAttributes": {
 		"3000": {
+			"onAutoForward": "ignore"
+		},
+		"3001": {
 			"onAutoForward": "ignore"
 		},
 		"3036": {

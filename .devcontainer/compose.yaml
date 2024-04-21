@@ -1,5 +1,5 @@
 services:
-  app:
+  rails:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -8,6 +8,7 @@ services:
     privileged: true
     expose:
       - 3000
+      - 3001
       - 3036
   caddy:
     image: "caddy:2.4.3"
@@ -21,8 +22,6 @@ services:
       - "2379:2379"
       - "9000:9000"
       - "9090:9090"
-    depends_on:
-      - app
   tidb:
     build:
       context: ./
@@ -46,12 +45,12 @@ services:
     volumes:
       - "./localstack/boot:/etc/localstack/init/ready.d"
       - "./localstack/data:/var/lib/localstack"
+      - "./localstack/localstack_boot_files:/opt/localstack_boot_files"
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       default:
         aliases:
           - sqs.localhost.localstack.cloud
+          - sqs.us-east-1.localhost.localstack.cloud
           - s3.localhost.localstack.cloud
           - pictures.s3.localhost.localstack.cloud # S3 bucket for pictures
-volumes:
-  caddy_config:

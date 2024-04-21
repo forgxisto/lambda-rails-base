@@ -37,4 +37,4 @@
 /public/assets
 
 /.devcontainer/
-/*/.DS_Store
+/**/*/.DS_Store
