@@ -1,0 +1,5 @@
+.molecules-section {
+  padding: 1em;
+  display: grid;
+  gap: 1em;
+}

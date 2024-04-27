@@ -1,0 +1,8 @@
+<%= render Molecules::Section::Component.new(class_names:) do |component| %>
+  <%= component.with_block_division do %>
+    <%= render Molecules::Form::Component.new(model: model, data: data, id: 'article_form') do |form| %>
+      <%= form.with_field_text(attribute: :title, required: true, maxlength: 255) %>
+      <%= form.with_field_text_area(attribute: :body, rows: 30, maxlength: 10_000) %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,36 @@
+.atoms-button {
+  display: inline-block;
+  padding: .5em 1em;
+  border-radius: var(--border-radius);
+  border: transparent 1px solid;
+
+  &.button {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-secondary);
+    background-color: var(--color-light);
+    border-color: var(--color-secondary);
+  }
+
+  &.submit {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  &.danger {
+    color: var(--color-light);
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+  }
+
+  &:hover {
+    text-decoration: none;
+    opacity: .8;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
+}

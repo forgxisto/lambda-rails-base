@@ -14,7 +14,11 @@ gem 'cssbundling-rails'
 
 # View Component
 gem 'view_component'
+
+# View Component Storybook
 gem 'lookbook'
+gem 'faker'
+gem 'puma'
 
 # Use mysql as the database for Active Record
 gem 'trilogy'

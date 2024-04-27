@@ -1,0 +1,9 @@
+<%= field_set_tag nil, class: field_set_class_names, data: do %>
+  <% if form.present? %>
+    <%= form.label attribute, class: label_class_names %>
+    <%= form.text_field attribute, class: field_class_names, **args %>
+  <% else %>
+    <%= label_tag attribute, nil, class: label_class_names %>
+    <%= text_field_tag attribute, value, class: field_class_names, **args %>
+  <% end %>
+<% end %>

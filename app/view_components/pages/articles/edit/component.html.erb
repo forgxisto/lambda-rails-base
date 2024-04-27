@@ -1,0 +1,9 @@
+<%= render Templates::Base::Component.new(class_names:) do %>
+  <%= render Molecules::ActionMenu::Component.new(class_names: 'small') do |component| %>
+    <%= component.with_link(label: 'Back to Index', href: articles_path) %>
+    <%= component.with_action(label: 'Cancel', href: article_path(context[:article])) %>
+    <%= component.with_action(label: 'Update', type: :submit, form: 'article_form') %>
+  <% end %>
+
+  <%= render Organisms::ArticleForm::Component.new(model: context[:article]) %>
+<% end %>

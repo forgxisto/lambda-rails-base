@@ -1,0 +1,13 @@
+<%= render Templates::Base::Component.new(class_names:) do %>
+  <%= render Molecules::ActionMenu::Component.new(class_names: 'small') do |component| %>
+    <%= component.with_link(label: 'Back to Index', href: articles_path) %>
+    <%= component.with_action(label: 'Edit', href: edit_article_path(context[:article])) %>
+    <%= component.with_action(label: 'Destroy', method: :delete, class_names: 'danger', form: { 'hx-delete': article_path(context[:article]), 'hx-confirm': 'Are you sure?', 'hx-indicator': '.full_page_indicator' }) %>
+  <% end %>
+
+  <%= render Molecules::Section::Component.new do |component|%>
+    <%= component.with_block_division do %>
+      <%= render Organisms::Article::Component.new(article: context[:article]) %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -35,7 +35,8 @@ module BlogApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.eager_load_paths << Rails.root.join('app/view_components')
+
+    config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
 
     # Don't generate system test files.
     config.generators.system_tests = nil

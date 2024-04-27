@@ -1,0 +1,5 @@
+<%= render Atoms::Division::Component.new(class_names:) do %>
+  <%= content %>
+  <%= render Atoms::LoadingIndicator::Component.new(class_names: 'full_page_indicator') %>
+  <%= render Atoms::FlashMessage::Component.new(flash:) %>
+<% end %>

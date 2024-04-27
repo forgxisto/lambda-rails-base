@@ -1,0 +1,12 @@
+<% case helper %>
+<% when :link_to %>
+  <%= link_to nil, class: class_names, **args do %>
+    <%= label || content %>
+  <% end %>
+<% when :button_to %>
+  <%= button_to label, path, type:, class: class_names, **args %>
+<% else %>
+  <%= button_tag type:, class: class_names, **args do %>
+    <%= label || content %>
+  <% end %>
+<% end %>

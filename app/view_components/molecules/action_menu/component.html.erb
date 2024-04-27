@@ -1,0 +1,11 @@
+<%= render Atoms::Division::Component.new(class_names:) do %>
+  <% links.each do |link| %>
+    <%= link %>
+  <% end %>
+
+  <%= render Atoms::Spacer::Component.new(class_names: 'spacer') %>
+
+  <% actions.each do |action| %>
+    <%= action %>
+  <% end %>
+<% end %>

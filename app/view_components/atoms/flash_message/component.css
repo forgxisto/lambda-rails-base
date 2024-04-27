@@ -1,0 +1,38 @@
+.atoms-flash_message {
+  border-radius: var(--border-radius);
+  padding: 1em 2em 1em 1em;
+  margin: 0 0 0 1em;
+  min-width: 50vw;
+
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  animation: fadeIn 1s;
+
+  &.fadeout {
+    animation: fadeOut .5s;
+  }
+
+  &.notice {
+    background-color: color-mix(in srgb, var(--color-success) 20%, white);
+    color: var(--color-success);
+  }
+
+  &.alert {
+    background-color: color-mix(in srgb, var(--color-danger) 20%, white);
+    color: var(--color-danger);
+  }
+
+  .close {
+    padding: .5em;
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    cursor: pointer;
+  }
+
+  .message {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}

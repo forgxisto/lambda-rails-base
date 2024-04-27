@@ -1,0 +1,13 @@
+<%= form_with(**args, class: class_names) do |f| %>
+  <% fields.each do |field| %>
+    <%= field %>
+  <% end %>
+
+  <div>
+    <% buttons.each do |button| %>
+      <%= button %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render Atoms::FlashMessage::Component.new(flash:) %>

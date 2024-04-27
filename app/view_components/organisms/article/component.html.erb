@@ -1,0 +1,4 @@
+<%= render Molecules::Section::Component.new(class_names:) do |component| %>
+  <%= component.with_heading { article.title } %>
+  <%= component.with_block_paragraph { article.body } %>
+<% end %>

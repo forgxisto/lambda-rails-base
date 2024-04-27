@@ -1,0 +1,10 @@
+<%= render Molecules::Section::Component.new do |component|%>
+  <%= component.with_block_division(class_names:) do %>
+    <% articles.each do |article| %>
+      <%= render Molecules::Card::Component.new(class_names: 'article', href: article_path(article.id)) do |component| %>
+        <%= component.with_heading(class_names: 'title') { article.title } %>
+        <%= component.with_paragraph(class_names: 'body') { article.body } %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

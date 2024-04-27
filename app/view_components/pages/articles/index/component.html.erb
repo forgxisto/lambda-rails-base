@@ -1,0 +1,7 @@
+<%= render Templates::Base::Component.new(class_names:) do %>
+  <%= render Molecules::ActionMenu::Component.new(class_names: 'small') do |component| %>
+    <%= component.with_action(label: 'New article', href: new_article_path) %>
+  <% end %>
+
+  <%= render Organisms::ArticleList::Component.new(articles: context[:articles]) %>
+<% end %>

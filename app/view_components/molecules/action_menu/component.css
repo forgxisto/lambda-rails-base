@@ -1,0 +1,17 @@
+.molecules-action_menu {
+  height: 5em;
+  display: flex;
+  gap: var(--spacing-1);
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  &.small {
+    font-size: .8em;
+  }
+
+  .spacer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

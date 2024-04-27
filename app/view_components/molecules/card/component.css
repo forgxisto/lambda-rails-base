@@ -1,0 +1,28 @@
+.molecules-card {
+  display: block;
+  border: var(--border-color) solid 1px;
+  border-radius: var(--border-radius);
+
+  text-decoration: inherit;
+  color: inherit;
+
+  &:hover {
+    text-decoration: inherit;
+    color: inherit
+  }
+
+  &[href$="#"] {
+    pointer-events: none;
+  }
+
+  .atoms-heading {
+    padding: var(--spacing-3);
+    font-size: 1.5rem;
+    border-bottom: var(--border-color) solid 1px;
+  }
+
+  .atoms-paragraph {
+    padding: var(--spacing-3);
+    font-size: 1rem;
+  }
+}

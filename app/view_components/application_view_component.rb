@@ -5,6 +5,7 @@ class ApplicationViewComponent < ViewComponent::Base
   def initialize(**args)
     super
     @class_names = args.delete(:class_names) || []
+    @args = args
   end
 
   erb_template <<~ERB
@@ -12,6 +13,8 @@ class ApplicationViewComponent < ViewComponent::Base
   ERB
 
   private
+
+  attr_reader :args
 
   def class_names
     component_class_name = self.class.module_parent_name.underscore.tr('/', '-')
