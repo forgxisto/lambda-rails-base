@@ -2,7 +2,6 @@
 
 Rails.application.configure do
   config.view_component.view_component_path = 'app/view_components'
-  config.eager_load_paths << Rails.root.join('app/view_components')
 
   unless Rails.env.production?
     require 'lookbook'
