@@ -12,6 +12,7 @@ gem 'vite_rails'
 
 # View Component
 gem 'view_component'
+gem 'lookbook', require: false
 
 # Use mysql as the database for Active Record
 gem 'trilogy'

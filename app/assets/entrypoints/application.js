@@ -24,6 +24,17 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // // Import all channels.
 // const channels = import.meta.globEager('./**/*_channel.js')
 
+/* リセットCSS */
+import.meta.glob('../stylesheets/destyle.css', { eager: true });
+
 // application.css ファイルを最初に読み込む
 import.meta.glob('../stylesheets/application.css', { eager: true });
 // その他必要な css や js を読み込む
+
+// ... ここに必要な css や js を読み込むコードを追加
+
+// 最後に view_components 配下の .js ファイルを全て読み込む
+const componentFiles = import.meta.glob('../../view_components/**/*.js', { eager: true });
+for (const path in componentFiles) {
+  componentFiles[path];
+}

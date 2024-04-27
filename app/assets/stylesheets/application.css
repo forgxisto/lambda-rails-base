@@ -1,0 +1,69 @@
+:root {
+  /* Color */
+  --color-primary: #0d6efd;
+  --color-secondary: #6c757d;
+  --color-success: #198754;
+  --color-info: #0dcaf0;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-light: #f8f9fa;
+  --color-dark: #212529;
+
+  /* Border */
+  --border-color: #d1d1d1;
+  --border-radius: .25em;
+
+  /* Body */
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.5;
+  --body-color: #212529;
+  --body-bg: #fff;
+
+  /* Link */
+  --link-color: #0d6efd;
+  --link-decoration: underline;
+  --link-hover-color: #0a58ca;
+}
+
+body {
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+  background-color: var(--body-bg);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: var(--link-decoration);
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+/* animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
