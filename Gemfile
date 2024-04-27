@@ -10,11 +10,11 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 # The asset pipeline for Rails
 gem 'vite_rails'
 
+# View Component
+gem 'view_component'
+
 # Use mysql as the database for Active Record
 gem 'trilogy'
-
-gem 'lamby'
-gem 'rack', '~> 2.0', '>= 2.2.9'
 
 # Active Job
 gem 'lambdakiq'
@@ -25,6 +25,13 @@ gem 'aws-sdk-s3'
 
 # Log
 gem 'lograge'
+
+# Bootsnap
+gem 'bootsnap', require: false
+
+# Lambda container
+gem 'lamby'
+gem 'rack', '~> 2.0', '>= 2.2.9'
 
 group :development, :test do
   gem 'debug'
