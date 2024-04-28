@@ -1,7 +1,9 @@
 {
   "all": {
     "sourceCodeDir": "app/assets",
-    "watchAdditionalPaths": []
+    "watchAdditionalPaths": [
+      "app/view_components/**/*"
+    ]
   },
   "development": {
     "autoBuild": true,

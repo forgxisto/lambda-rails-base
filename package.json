@@ -1,5 +1,7 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "htmx.org": "^1.9.10"
+  },
   "devDependencies": {
     "vite": "^5.2.10",
     "vite-plugin-ruby": "^5.0.0"

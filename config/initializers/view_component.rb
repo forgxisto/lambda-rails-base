@@ -4,8 +4,6 @@ Rails.application.configure do
   config.view_component.view_component_path = 'app/view_components'
 
   unless Rails.env.production?
-    require 'lookbook'
-
     # CORS
     config.action_dispatch.default_headers = {
       'Access-Control-Allow-Origin' => '*',
