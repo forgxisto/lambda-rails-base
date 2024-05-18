@@ -1,3 +1,9 @@
 /* Entry point for your PostCSS build */
 @import url('destyle.css');
 @import url('base.css');
+
+@import-glob '../../view_components/atoms/**/*.css';
+@import-glob '../../view_components/molecules/**/*.css';
+@import-glob '../../view_components/organisms/**/*.css';
+@import-glob '../../view_components/templates/**/*.css';
+/* @import-glob '../../view_components/pages*.css'; */

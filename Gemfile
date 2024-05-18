@@ -41,18 +41,13 @@ gem 'lamby'
 gem 'rack', '~> 2.0', '>= 2.2.9'
 
 group :development, :test do
-  gem 'puma'
   gem 'debug'
   gem 'factory_bot_rails'
   gem 'rspec-parameterized-context'
   gem 'rspec-rails'
-  gem 'faker'
 end
 
 group :development do
-  gem 'listen'
-  gem 'actioncable'
-
   gem 'annotate', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

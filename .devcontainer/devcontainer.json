@@ -36,7 +36,7 @@
 		"source=${localWorkspaceFolder},target=/rails,type=bind,consistency=cached"
 	],
 	"postCreateCommand": "",
-	"postStartCommand": "rm -fr ./tmp/* && rm -fr ./log/* && rm -fr ./public/vite*",
+	"postStartCommand": "rm -fr ./tmp/* && rm -fr ./log/*",
 	"forwardPorts": [
 		"caddy:3000",
 		"caddy:3036",
