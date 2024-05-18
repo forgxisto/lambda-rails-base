@@ -8,7 +8,9 @@ ruby '3.2.3'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 # The asset pipeline for Rails
-gem 'vite_rails'
+gem 'sprockets-rails'
+gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 
 # View Component
 gem 'view_component'
