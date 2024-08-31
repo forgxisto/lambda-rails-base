@@ -1,7 +1,7 @@
 # http://docs.docker.jp/compose/rails.html
 # https://hub.docker.com/r/library/ruby/
 
-ARG RUBY_VERSION=3.2.3
+ARG RUBY_VERSION=3.3.1
 
 FROM ruby:$RUBY_VERSION-slim AS base
 
@@ -27,20 +27,12 @@ RUN apt -y update \
 
 # Upgrade RubyGems and install the latest Bundler version
 RUN gem update --system && \
-    gem install bundler
-
-# Configure bundler
-ENV LANG=C.UTF-8 \
-    BUNDLE_JOBS=4 \
-    BUNDLE_RETRY=3 \
-    BUNDLE_PATH=/rails/vendor/bundle
+    gem install bundler -v 2.5.6
 
 CMD ["/bin/bash"]
 
 # ================================================= For development
 FROM base AS development
-
-WORKDIR /rails
 
 # Set development environment
 RUN apt -y update \
@@ -50,8 +42,9 @@ RUN apt -y update \
     curl \
     unzip \
     git \
+    libsqlite3-dev \
+    libpq-dev \
     default-mysql-client \
-    default-libmysqlclient-dev \
     locales \
     vim \
     tmux \
@@ -77,6 +70,9 @@ RUN gunzip -d overmind-v2.4.0-linux-arm.gz
 RUN chmod +x overmind-v2.4.0-linux-arm
 RUN mv overmind-v2.4.0-linux-arm /usr/local/bin/overmind
 
+# copy .tmux.conf
+COPY .tmux.* /root/
+
 # Copy source
 COPY . .
 
@@ -84,8 +80,6 @@ EXPOSE 3000
 
 # ================================================= For production-builder
 FROM development AS production-builder
-
-WORKDIR /rails
 
 # Set production environment
 ENV RAILS_ENV=production \
@@ -105,12 +99,12 @@ RUN rm -fr ${BUNDLE_PATH} \
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN bundle exec rails tmp:cache:clear \
+    && bundle exec rails assets:clobber
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # ================================================= For production
 FROM base AS production
-
-WORKDIR /rails
 
 ENV RAILS_ENV=production \
     BUNDLE_WITHOUT=development \
@@ -127,8 +121,8 @@ COPY --from=production-builder /rails/public /rails/public
 COPY --from=production-builder /rails/tmp /rails/tmp
 
 # Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash \
-    && chown -R rails:rails db log storage tmp
+RUN useradd rails --create-home --shell /bin/bash
+RUN chown -R rails:rails db log storage tmp
 USER rails:rails
 
 ENTRYPOINT [ "/usr/local/bundle/bin/aws_lambda_ric" ]

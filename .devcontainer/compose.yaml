@@ -1,11 +1,13 @@
 services:
   rails:
     build:
-      context: ./
+      context: ../
       dockerfile: Dockerfile
       target: development
     command: sleep infinity
     privileged: true
+    env_file:
+      - ../.env
     expose:
       - 3000
       - 3001

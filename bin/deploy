@@ -1,0 +1,75 @@
+#!/bin/sh
+set -e
+
+RAILS_ENV=production
+DEPLOY_ENV=${DEPLOY_ENV-$(echo 'staging')}
+SECRET_KEY_BASE=${SECRET_KEY_BASE-$(echo 'forgxisto-inc-lambda')}
+
+AWS_REGION=${AWS_REGION-$(aws configure get region || echo 'us-east-1')}
+AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+IMAGE_REPOSITORY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/forgxisto-inc-lambda"
+
+if [ "$CI" != "true" ]; then
+  echo "== Cleaning dev dependencies for local deploy. Run ./bin/setup again afterward! =="
+  rm -rf ./.bundle \
+         ./vendor/bundle \
+         ./node_modules \
+         ./public/assets \
+         ./tmp/* \
+         ./log/*
+fi
+
+if [ "$CI" = "true" ]; then
+  echo "== Cleanup Unused Files & Directories =="
+  rm -rf .bundle \
+         vendor/bundle \
+         node_modules \
+         public/assets \
+         spec \
+         tmp/* \
+         log/*
+fi
+
+echo '== Create ECR Repo if needed. =='
+aws ecr describe-repositories \
+  --repository-names "forgxisto-inc-lambda" \
+  --region "$AWS_REGION" > /dev/null || \
+aws ecr create-repository \
+  --repository-name "forgxisto-inc-lambda" \
+  --image-tag-mutability "MUTABLE" \
+  --image-scanning-configuration "scanOnPush=true" \
+  --region "$AWS_REGION" > /dev/null || true
+
+echo "== SAM build =="
+sam build \
+  --parameter-overrides \
+    RailsEnv="${RAILS_ENV}" \
+    SecretKeyBase="${SECRET_KEY_BASE}"
+
+echo "== SAM package =="
+sam package \
+  --region "$AWS_REGION" \
+  --template-file ./.aws-sam/build/template.yaml \
+  --output-template-file ./.aws-sam/build/packaged.yaml \
+  --image-repository "$IMAGE_REPOSITORY"
+
+echo "== SAM deploy =="
+sam deploy \
+  --region "$AWS_REGION" \
+  --template-file ./.aws-sam/build/packaged.yaml \
+  --stack-name "forgxisto-inc-lambda-${DEPLOY_ENV}" \
+  --image-repository "$IMAGE_REPOSITORY" \
+  --capabilities "CAPABILITY_IAM" \
+  --parameter-overrides \
+    RailsEnv="${RAILS_ENV}" \
+    SecretKeyBase="${SECRET_KEY_BASE}"
+
+if [ "$CI" != "true" ]; then
+  echo "== Cleaning prod deploy dependencies from local. =="
+  rm -rf ./.bundle \
+         ./vendor/bundle \
+         ./node_modules \
+         ./public/assets \
+         ./tmp/* \
+         ./log/*
+fi

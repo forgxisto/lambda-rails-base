@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-ruby '3.2.3'
+ruby '3.3.1'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 # The asset pipeline for Rails
-gem 'sprockets-rails'
+gem 'propshaft'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
@@ -34,7 +34,6 @@ gem 'bootsnap', require: false
 
 # Lambda container
 gem 'lamby'
-gem 'rack', '~> 2.0', '>= 2.2.9'
 
 group :development, :test do
   gem 'puma'
@@ -55,4 +54,9 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-thread_safety', require: false
+
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+
+  gem 'ruby-lsp', require: false
 end

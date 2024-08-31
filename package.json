@@ -1,18 +1,21 @@
 {
   "scripts": {
-    "build": "esbuild app/assets/javascripts/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "node esbuild.config.mjs",
     "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
   },
   "dependencies": {
-    "destyle.css": "^4.0.1",
-    "htmx.org": "^1.9.10"
+    "destyle.css": "^4.0",
+    "htmx.org": "^1.9"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "esbuild": "^0.21.3",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.1.0",
-    "postcss-nesting": "^12.1.4"
+    "autoprefixer": "^10.4",
+    "cssnano": "^7.0.5",
+    "esbuild": "^0.23",
+    "esbuild-plugin-import-glob": "^0.1",
+    "postcss": "^8.4",
+    "postcss-cli": "^11.0",
+    "postcss-import": "^16.1",
+    "postcss-import-ext-glob": "^2.1",
+    "postcss-nesting": "^13.0"
   }
 }
